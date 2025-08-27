@@ -1,0 +1,139 @@
+/* Paleta */
+.bg-red {
+  background-color: #C62828;
+}
+.btn-red {
+  background-color: #C62828;
+  color: white;
+  border: none;
+  transition: background-color 0.3s ease;
+}
+.btn-red:hover {
+  background-color: #b71c1c;
+}
+
+/* Secciones */
+.section {
+  background-color: #FDFEFE;
+  color: #212121;
+}
+.section-title {
+  font-weight: 700;
+  color: #C62828;
+  margin-bottom: 1rem;
+}
+
+/* General */
+body {
+  font-family: 'Segoe UI', sans-serif;
+  background-color: #fff;
+  color: #212121;
+  scroll-behavior: smooth;
+}
+textarea, input {
+  border-radius: 0.375rem;
+}
+/* Botón flotante de WhatsApp */
+.whatsapp-float {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  z-index: 999;
+  width: 60px;
+  height: 60px;
+  background-color: #25D366;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+  transition: transform 0.3s ease;
+}
+.whatsapp-float:hover {
+  transform: scale(1.1);
+}
+.whatsapp-float img {
+  width: 30px;
+  height: 30px;
+}
+/* Redes sociales */
+.social-icon {
+  display: inline-block;
+  width: 50px;
+  height: 50px;
+  transition: transform 0.3s ease;
+}
+.social-icon img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+.social-icon:hover {
+  transform: scale(1.2);
+}
+
+/* Estilo para las tarjetas */
+.card {
+    border: none;
+    border-radius: 15px; /* Bordes más redondeados */
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1); /* Sombra más suave */
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card:hover {
+    transform: translateY(-10px); /* Efecto de elevación más pronunciado */
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2); /* Sombra más intensa al pasar el ratón */
+}
+
+/* Estilo para los títulos de las tarjetas */
+.card-title {
+    font-size: 1.25rem;
+    font-weight: bold;
+    color: #333;
+    text-transform: uppercase; /* Para hacer el texto más llamativo */
+}
+
+/* Estilo para el texto dentro de la tarjeta */
+.card-text {
+    font-size: 1rem;
+    color: #666;
+    line-height: 1.5; /* Mejora la legibilidad */
+}
+
+/* Estilo para el cuerpo de la tarjeta */
+.card-body {
+    padding: 20px;
+}
+
+/* Estilo para la Sede Principal */
+.card.border-danger {
+    border: 2px solid #dc3545; /* Bordes rojos para destacar la sede principal */
+}
+
+.card-title.text-danger {
+    color: #dc3545; /* Título en rojo para la sede principal */
+}
+
+.card-body .badge.bg-danger {
+    background-color: #dc3545; /* Fondo rojo para la etiqueta 'Sede Principal' */
+}
+
+/* Efecto de hover para el badge */
+.card-body .badge.bg-danger:hover {
+    background-color: #c82333; /* Color más oscuro al pasar el ratón */
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+.fb-page {
+    width: 100% !important;
+    max-width: 100%;
+    overflow: hidden;
+}
+
+/*FILTRO TIK TOK*/
+.tiktok-icon {
+  filter: invert(1) brightness(2);
+}
