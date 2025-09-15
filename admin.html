@@ -60,7 +60,11 @@
         </div>
 
         <!-- Lista de productos con precio por sede -->
-        <div id="product-list" class="d-flex flex-wrap">
+    <!-- Modificación en el contenedor de productos -->
+    <div id="product-list" class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 row-cols-xl-6 g-4">
+        <!-- Productos se cargarán aquí -->
+    </div>
+
             <!-- Productos se cargarán aquí -->
         </div>
     </div>
@@ -182,29 +186,30 @@
         }
 
         // Crear tarjeta de producto editable
+      // Crear tarjeta de producto editable
         function crearTarjetaProducto(id, nombre, imagen, precio, sede) {
             const col = document.createElement("div");
-            col.className = "col-md-4 product-card-container";
+            col.className = "col-12 col-sm-6 col-md-4 col-lg-2";  // Asegura que haya 6 productos por fila en pantallas grandes
 
             const precioValor = precio !== undefined ? precio : "";
 
             col.innerHTML = `
-                <div class="card shadow-sm product-card">
-                    <img src="${imagen}" class="card-img-top" alt="Imagen de ${nombre}" />
-                    <div class="card-body">
-                        <h5 class="card-title">${nombre}</h5>
-                        <div class="mb-2">
-                            <label class="form-label" for="precio-${id}">Precio en ${sede} (S/)</label>
-                            <input type="number" class="form-control" id="precio-${id}" value="${precioValor}" step="0.01" min="0" />
-                        </div>
-                        <button class="btn btn-primary mb-2" onclick="guardarPrecio('${sede}', '${id}')">Guardar Precio</button>
-                        ${precio !== undefined ? `<button class="btn btn-danger mb-2" onclick="eliminarPrecio('${sede}', '${id}')">Eliminar de Sede</button>` : ``}
-                        <hr />
-                        <button class="btn btn-warning btn-sm mb-1" onclick="editarProductoGlobal('${id}')">Editar Producto Global</button>
-                        <button class="btn btn-outline-danger btn-sm" onclick="eliminarProductoGlobal('${id}')">Eliminar Producto Global</button>
-                    </div>
+        <div class="card shadow-sm product-card">
+            <img src="${imagen}" class="card-img-top" alt="Imagen de ${nombre}" />
+            <div class="card-body">
+                <h5 class="card-title">${nombre}</h5>
+                <div class="mb-2">
+                    <label class="form-label" for="precio-${id}">Precio en ${sede} (S/)</label>
+                    <input type="number" class="form-control" id="precio-${id}" value="${precioValor}" step="0.01" min="0" />
                 </div>
-            `;
+                <button class="btn btn-primary mb-2" onclick="guardarPrecio('${sede}', '${id}')">Guardar Precio</button>
+                ${precio !== undefined ? `<button class="btn btn-danger mb-2" onclick="eliminarPrecio('${sede}', '${id}')">Eliminar de Sede</button>` : ``}
+                <hr />
+                <button class="btn btn-warning btn-sm mb-1" onclick="editarProductoGlobal('${id}')">Editar Producto Global</button>
+                <button class="btn btn-outline-danger btn-sm" onclick="eliminarProductoGlobal('${id}')">Eliminar Producto Global</button>
+            </div>
+        </div>
+    `;
             productList.appendChild(col);
         }
 
