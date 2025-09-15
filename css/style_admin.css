@@ -1,6 +1,13 @@
 /* Variables globales */
 :root {
   --navbar-height: 4rem; /* 64px aprox */
+  --primary-color: #c62828; /* Rojo principal */
+  --secondary-color: #343a40; /* Gris oscuro */
+  --accent-color: #ffc107; /* Amarillo para destacar */
+  --background-color: #f8f9fa; /* Fondo claro */
+  --text-color: #212121; /* Color de texto principal */
+  --card-shadow: rgba(0, 0, 0, 0.1);
+  --btn-hover-color: #b71c1c; /* Hover para botones */
 }
 
 /* Reset y configuración general */
@@ -10,17 +17,6 @@ html {
   scroll-behavior: smooth;
 }
 
-body {
-  margin: 0;
-  padding-top: var(--navbar-height); /* espacio para navbar fijo */
-  scroll-padding-top: var(--navbar-height);
-  font-family: "Segoe UI", sans-serif;
-  background-color: #fff;
-  color: #212121;
-  min-height: 100vh;
-  overflow-x: hidden; /* previene scroll horizontal */
-  overflow-y: auto;
-}
 
 /* Spacer para separar el contenido del navbar fijo en desktop */
 .spacer-navbar {
@@ -29,17 +25,17 @@ body {
 
 /* Paleta de colores */
 .bg-red {
-  background-color: #c62828 !important;
+  background-color: var(--primary-color) !important;
 }
 
 .btn-red {
-  background-color: #c62828;
+  background-color: var(--primary-color);
   color: white;
   border: none;
   transition: background-color 0.3s ease;
 }
 .btn-red:hover {
-  background-color: #b71c1c;
+  background-color: var(--btn-hover-color);
 }
 
 /* Navbar */
@@ -49,11 +45,26 @@ body {
   top: 0;
   width: 100%;
   z-index: 1030;
+  background-color: var(--secondary-color);
+}
+
+.navbar .nav-link {
+  color: white !important;
+  font-size: 1.15rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  transition: color 0.3s ease;
+}
+
+.navbar .nav-link:hover,
+.navbar .nav-link.active {
+  color: var(--accent-color) !important; /* Color dorado para destacar */
 }
 
 /* Fondo rojo para menú colapsable */
 .navbar-collapse {
-  background-color: #c62828;
+  background-color: var(--primary-color);
 }
 
 /* Menú colapsable en móvil */
@@ -68,21 +79,22 @@ body {
     padding: 1rem;
     z-index: 1040;
   }
-  
+
   /* Opcional: oculta el spacer-navbar en móvil para evitar espacio extra */
   .spacer-navbar {
     display: none;
   }
 }
 
-/* Estilos adicionales: botones, tarjetas, etc. (mantén como están) */
+/* Estilos adicionales: botones, tarjetas, etc. */
 .section {
   background-color: #fdfefe;
-  color: #212121;
+  color: var(--text-color);
 }
+
 .section-title {
   font-weight: 700;
-  color: #c62828;
+  color: var(--primary-color);
   margin-bottom: 1rem;
 }
 
@@ -141,7 +153,7 @@ input {
 /* Tarjetas */
 .card {
   border-radius: 15px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 4px 12px var(--card-shadow);
   transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
 .card:hover {
@@ -151,7 +163,7 @@ input {
 .card-title {
   font-size: 1.25rem;
   font-weight: bold;
-  color: #333;
+  color: var(--text-color);
   text-transform: uppercase;
   min-height: 50px;
 }
@@ -163,6 +175,7 @@ input {
 .card-body {
   padding: 20px;
 }
+
 /* Sede Principal */
 .card.border-danger {
   border: 2px solid #dc3545;
@@ -216,22 +229,25 @@ body::-webkit-scrollbar {
   width: 0px;
   background: transparent;
 }
+
 #sede-select {
   max-width: 300px;
   margin: 0 auto;
-  box-shadow: 0 3px 8px rgba(0,0,0,0.1);
+  box-shadow: 0 3px 8px rgba(0, 0, 0, 0.1);
   border-radius: 8px;
   padding: 8px 12px;
   font-size: 1.1rem;
   transition: box-shadow 0.3s ease;
 }
 #sede-select:focus {
-  box-shadow: 0 0 8px #dc3545;
+  box-shadow: 0 0 8px var(--primary-color);
   outline: none;
 }
+
 #productos-container {
   transition: opacity 0.5s ease;
 }
+
 /* --- Menú responsive estilo sidebar (pantalla pequeña) --- */
 @media (max-width: 992px) {
   .navbar-collapse {
@@ -242,10 +258,10 @@ body::-webkit-scrollbar {
     max-width: 320px;
     height: auto;
     max-height: calc(100vh - var(--navbar-height));
-    background-color: #c62828;
+    background-color: var(--primary-color);
     padding: 1rem;
     overflow-y: auto;
-    box-shadow: -2px 0 8px rgba(0,0,0,0.2);
+    box-shadow: -2px 0 8px rgba(0, 0, 0, 0.2);
     z-index: 1040;
     transform: translateX(100%);
     transition: transform 0.3s ease;
@@ -262,6 +278,7 @@ body::-webkit-scrollbar {
   background-color: #b71c1c;
   border-radius: 5px;
 }
+
 /* Evita deslizamientos laterales en el colapso del navbar */
 .navbar-collapse {
   transform: none !important;
@@ -269,20 +286,109 @@ body::-webkit-scrollbar {
   left: auto !important;
   right: auto !important;
 }
+
 .navbar {
-  font-family: 'Poppins', sans-serif;
+  font-family: "Poppins", sans-serif;
 }
 
-.navbar .nav-link {
-  color: white !important;
-  font-size: 1.15rem;
+/* Sidebar */
+.sidebar {
+  background-color: var(--secondary-color);
+  color: white;
+  height: 100vh;
+  position: fixed;
+  width: 220px;
+  padding-top: 20px;
+  box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
+}
+
+.sidebar h4 {
+  font-size: 1.5rem;
+  color: white;
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.sidebar .user-name {
+  text-align: center;
+  font-size: 1.1rem;
+  font-weight: 500;
+  margin-bottom: 30px;
+}
+
+.sidebar a {
+  color: white;
+  text-decoration: none;
+  padding: 10px;
+  display: block;
+  margin-bottom: 10px;
+  border-radius: 5px;
+  transition: background-color 0.3s ease;
+}
+
+.sidebar a:hover {
+  background-color: #495057;
+}
+
+.sidebar .logout-btn {
+  position: absolute;
+  bottom: 20px;
+  width: 100%;
+  text-align: center;
+}
+
+/* Content Section */
+.content {
+  margin-left: 240px;
+  padding: 30px;
+}
+
+.header {
+  margin-bottom: 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.header h2 {
+  font-size: 2rem;
   font-weight: 600;
-  text-transform: uppercase;
-  letter-spacing: 1px;
-  transition: color 0.3s ease;
+  color: var(--text-color);
 }
 
-.navbar .nav-link:hover,
-.navbar .nav-link.active {
-  color: #ffc107 !important; /* color dorado para destacar */
+.product-card {
+  max-width: 280px;
+  margin: 10px;
+}
+
+.product-card img {
+  object-fit: cover;
+  height: 180px;
+  border-radius: 5px;
+}
+
+.card-title {
+  font-size: 1.1rem;
+  color: var(--text-color);
+}
+
+.card-body {
+  padding: 15px;
+}
+
+.card-body input {
+  margin-bottom: 10px;
+}
+
+/* Product List Section */
+#product-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+.product-card-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }

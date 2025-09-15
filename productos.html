@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Productos - AVICRUZ S.A.C</title>
+    <!-- Firebase SDKs -->
+    <script src="https://www.gstatic.com/firebasejs/9.22.2/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.22.2/firebase-database-compat.js"></script>
+    <script src="firebase-config.js"></script> <!-- Tu configuración personalizada -->
+
+    <!-- Bootstrap 5 -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" />
+    <!-- Animate.css -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
+    <!-- AOS (Animate On Scroll) -->
+    <link href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" rel="stylesheet" />
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="css/style.css" />
+    <!-- FontAwesome -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet" />
+</head>
+
+<body style="min-height: 100vh; display: flex; flex-direction: column;"></body>>
+<div class="page-content" style="flex: 1;">
+
+    <!-- Facebook SDK (opcional, puedes quitar si no usas en esta página) -->
+    <div id="fb-root"></div>
+    <script async defer crossorigin="anonymous" src="https://connect.facebook.net/es_LA/sdk.js#xfbml=1&version=v19.0"
+        nonce="abc123"></script>
+
+    <!-- Navbar -->
+    <div id="header-placeholder"></div>
+
+    <!-- Selector de sede -->
+    <section class="section py-5 bg-light">
+        <div class="container">
+            <h2 class="section-title text-center mb-4" data-aos="fade-up">Seleccione una sede</h2>
+            <div class="text-center">
+                <select id="sede-select" class="form-select w-auto mx-auto">
+                    <option value="avelino-principal">AVELINO PRINCIPAL</option>
+                    <option value="selva-alegre">ALTO SELVA ALEGRE</option>
+                    <option value="mariano-melgar">MARIANO MELGAR</option>
+                    <option value="paucarpata">PAUCARPATA</option>
+                    <option value="miraflores">MIRAFLORES</option>
+                    <option value="socabaya">SOCABAYA</option>
+                    <option value="cayma-tomilla">CAYMA</option>
+                </select>
+            </div>
+        </div>
+    </section>
+
+    <!-- Productos -->
+    <section class="section py-5">
+        <div class="container">
+            <h2 class="section-title text-center mb-4" data-aos="fade-up">Nuestros Productos</h2>
+            <div id="productos-container" class="d-flex flex-wrap justify-content-center gap-4"></div>
+        </div>
+    </section>
+</div>
+<!-- Footer -->
+<div id="footer-placeholder"></div>
+
+<!-- Botón WhatsApp -->
+<a href="https://wa.me/51993671861" class="whatsapp-float" target="_blank"
+    style="position: fixed; bottom: 20px; right: 20px; z-index: 10000;">
+    <img src="https://cdn-icons-png.flaticon.com/512/733/733585.png" alt="WhatsApp" width="50" height="50" />
+</a>
+
+<!-- Chatbot -->
+<div id="chatbot-container" style="position: fixed; bottom: 90px; right: 20px; z-index: 10000; cursor: pointer;">
+    <img src="https://cdn-icons-png.flaticon.com/512/4712/4712027.png" alt="Chatbot" width="50" height="50"
+        id="chatbot-toggle" />
+</div>
+
+<div id="chatbot"
+    style="display:none; position: fixed; bottom: 140px; right: 20px; width: 320px; max-height: 450px; background: white; box-shadow: 0 0 10px rgba(0,0,0,0.3); border-radius: 10px; display: flex; flex-direction: column; overflow: hidden; font-family: Arial, sans-serif; z-index: 10001;">
+    <div id="chatbot-header"
+        style="background:#dc3545; color: white; padding: 12px; cursor: pointer; user-select: none;">
+        Asistente Avicruz <span style="float:right; cursor:pointer;" id="chatbot-close">&times;</span>
+    </div>
+    <div id="chatbot-messages" style="flex: 1; padding: 10px; overflow-y: auto; font-size: 14px; background:#f8f9fa;">
+    </div>
+    <form id="chatbot-form" style="display: flex; border-top: 1px solid #ddd;">
+        <input type="text" id="chatbot-input" autocomplete="off" placeholder="Escribe tu mensaje..."
+            style="flex: 1; border: none; padding: 10px; font-size: 14px;" required />
+        <button type="submit"
+            style="background:#dc3545; border:none; color:white; padding: 0 15px; cursor: pointer;">Enviar</button>
+    </form>
+</div>
+
+<!-- Canvas festivo -->
+<canvas id="festiveCanvas"
+    style="position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; pointer-events: none; z-index: 9999;"></canvas>
+
+<!-- Scripts -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
+<script src="js/main.js"></script>
+
+<!-- Cargar Header y Footer -->
+<script>
+    fetch("header.html")
+        .then(res => res.text())
+        .then(data => {
+            document.getElementById("header-placeholder").innerHTML = data;
+            window.scrollTo(0, 0);
+        });
+
+    fetch("footer.html")
+        .then(res => res.text())
+        .then(data => {
+            document.getElementById("footer-placeholder").innerHTML = data;
+        });
+
+    AOS.init();
+</script>
+
+<!-- Script Productos -->
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+        const sedeSelect = document.getElementById('sede-select');
+        const productosContainer = document.getElementById('productos-container');
+
+        const db = firebase.database();
+
+        function mostrarProductos(sedeKey) {
+            productosContainer.innerHTML = "";
+
+            db.ref(`precios_por_sede/${sedeKey}`).once("value").then(preciosSnap => {
+                const precios = preciosSnap.val() || {};
+
+                db.ref("productos").once("value").then(productosSnap => {
+                    const productos = productosSnap.val() || {};
+
+                    Object.entries(productos).forEach(([prodId, producto]) => {
+                        if (precios.hasOwnProperty(prodId)) {
+                            const precio = precios[prodId];
+
+                            const card = document.createElement('div');
+                            card.className = 'card shadow';
+                            card.style.width = '280px';
+                            card.setAttribute("data-aos", "fade-up");
+
+                            card.innerHTML = `
+                      <div class="card-body d-flex flex-column">
+                          <h5 class="card-title text-center">${producto.nombre}</h5>
+                          <img src="${producto.imagen || 'https://via.placeholder.com/280x150?text=Imagen'}" 
+                              alt="${producto.nombre}" 
+                              class="img-fluid mb-3 rounded" />
+
+                          <div class="mt-auto">
+                              <div class="d-flex justify-content-between align-items-center mb-2">
+                                  <span class="fw-semibold">Sede:</span>
+                                  <span class="text-dark">${sedeSelect.options[sedeSelect.selectedIndex].text}</span>
+                              </div>
+
+                              <div class="price-box text-center p-3 animate__animated animate__pulse animate__infinite">
+                                  <i class="fas fa-tags me-2 text-success"></i>
+                                  <span class="text-success fw-bold fs-2">S/ ${parseFloat(precio).toFixed(2)}</span>
+                              </div>
+                          </div>
+                      </div>
+                      `;
+
+                            productosContainer.appendChild(card);
+                        }
+                    });
+
+                    AOS.refresh();
+                });
+            });
+        }
+
+        sedeSelect.addEventListener('change', () => {
+            mostrarProductos(sedeSelect.value);
+        });
+
+        // Carga inicial
+        mostrarProductos(sedeSelect.value);
+    });
+
+</script>
+
+
+<!-- Chatbot JS -->
+<script>
+    document.getElementById("chatbot-toggle").addEventListener("click", () => {
+        document.getElementById("chatbot").style.display = "flex";
+    });
+
+    document.getElementById("chatbot-close").addEventListener("click", () => {
+        document.getElementById("chatbot").style.display = "none";
+    });
+
+    document.getElementById("chatbot-form").addEventListener("submit", function (e) {
+        e.preventDefault();
+        const input = document.getElementById("chatbot-input");
+        const message = input.value.trim();
+        if (message === "") return;
+
+        const messagesContainer = document.getElementById("chatbot-messages");
+        const userMessage = document.createElement("div");
+        userMessage.textContent = "👤 " + message;
+        userMessage.style.margin = "5px 0";
+        userMessage.style.textAlign = "right";
+        messagesContainer.appendChild(userMessage);
+
+        const botResponse = document.createElement("div");
+        botResponse.textContent = "🤖 Gracias por tu mensaje. En breve te responderemos.";
+        botResponse.style.margin = "5px 0";
+        botResponse.style.textAlign = "left";
+        messagesContainer.appendChild(botResponse);
+
+        messagesContainer.scrollTop = messagesContainer.scrollHeight;
+        input.value = "";
+    });
+</script>
+</body>
+
+</html>

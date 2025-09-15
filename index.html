@@ -4,22 +4,17 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Mi Página Minimalista</title>
-
+    <title>AVICRUZ S.A.C </title>
     <!-- Bootstrap 5 -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
-
     <!-- Animate.css -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
-
     <!-- AOS (Animate On Scroll) -->
     <link href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" rel="stylesheet" />
-
     <!-- Custom CSS -->
     <link rel="stylesheet" href="css/style.css">
     <!-- Agregar FontAwesome -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
-
 </head>
 
 <body>
@@ -28,29 +23,8 @@
     <script async defer crossorigin="anonymous" src="https://connect.facebook.net/es_LA/sdk.js#xfbml=1&version=v19.0"
         nonce="abc123">
         </script>
-
     <!-- Navbar -->
-    <nav class="navbar navbar-expand-lg navbar-dark bg-red sticky-top shadow-sm">
-        <div class="container">
-            <a class="navbar-brand fw-bold" href="#">Mi Web</a>
-            <button class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navMenu">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navMenu">
-                <ul class="navbar-nav ms-auto">
-                    <li class="nav-item"><a class="nav-link" href="#inicio">Inicio</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#quienes-somos">Quiénes Somos</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#reclamaciones">Sedes</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#facebook-feed">Noticias</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#facebook-feed">Redes Sociales</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#contacto">Contacto</a></li>
-
-
-                </ul>
-            </div>
-        </div>
-    </nav>
-
+    <div id="header-placeholder"></div>
     <!-- Slider -->
     <header id="inicio" class="carousel slide" data-bs-ride="carousel">
         <div class="carousel-inner">
@@ -113,14 +87,22 @@
                         <img src="https://via.placeholder.com/300x200" class="card-img-top" alt="Sede Principal">
                         <div class="card-body">
                             <h5 class="card-title text-danger">SEDE PRINCIPAL - AVELINO CACERES</h5>
-
                             <p class="card-text">Dirección: Av. Vidaurrazaga, Mz E Lt 01, al costado de "Mi Mercado",
-                                frente a "Caja Sullana"</p>
+                                frente a "Caja
+                                Sullana"</p>
                             <span class="badge bg-danger">Sede Principal</span>
+                        </div>
+                        <!-- Mapa de Google Maps -->
+                        <div class="card-footer">
+                            <iframe
+                                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3826.971799166379!2d-71.54234162368334!3d-16.426258584306147!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x91424bb25f273b39%3A0x2f05a1063ef78c39!2sAvicruz!5e0!3m2!1ses!2spe!4v1757908265477!5m2!1ses!2spe"
+                                width="100%" height="300" style="border:0;" allowfullscreen="" loading="lazy"
+                                referrerpolicy="no-referrer-when-downgrade"></iframe>
                         </div>
                     </div>
                 </div>
             </div>
+
 
             <!-- Filas de sedes restantes (en columnas de 3) -->
             <div class="row row-cols-1 row-cols-md-3 g-4">
@@ -133,6 +115,7 @@
                             <p class="card-text">Dirección: Esquina Calvario con Miguel Grau, frente al "Mercado La
                                 Chabela"</p>
                         </div>
+                        
                     </div>
                 </div>
 
@@ -202,18 +185,17 @@
             <!-- <div class="row row-cols-1 row-cols-md-3 g-4 mt-4">  -->
             <!-- Sede 7 -->
             <!--  <div class="col" data-aos="fade-up" data-aos-delay="800">
-                <div class="card h-100">
-                    <img src="https://via.placeholder.com/300x200" class="card-img-top" alt="Sede 7">
-                    <div class="card-body">
-                        <h5 class="card-title">Sede 7 - Tacna</h5>
-                        <p class="card-text">Dirección: Calle San Martín 900, Tacna, Perú.</p>
+                        <div class="card h-100">
+                            <img src="https://via.placeholder.com/300x200" class="card-img-top" alt="Sede 7">
+                            <div class="card-body">
+                                <h5 class="card-title">Sede 7 - Tacna</h5>
+                                <p class="card-text">Dirección: Calle San Martín 900, Tacna, Perú.</p>
+                            </div>
+                        </div>
                     </div>
-                </div>
-            </div>
-        </div>-->
+                </div>-->
         </div>
     </section>
-
     <!-- Noticias desde Facebook -->
     <section id="facebook-feed" class="section py-5 text-center bg-light">
         <div class="container">
@@ -233,27 +215,6 @@
             </div>
         </div>
     </section>
-
-    <!-- Redes Sociales -->
-    <!--  <section id="redes-sociales" class="section py-5 text-center bg-light">
-        <div class="container">
-            <h2 class="section-title" data-aos="fade-up">Síguenos en redes</h2>
-            <p class="mb-4" data-aos="fade-up" data-aos-delay="100">Conecta con nosotros para más novedades y contenido
-                exclusivo:</p>
-            <div class="d-flex justify-content-center gap-4" data-aos="zoom-in" data-aos-delay="200">
-                <a href="https://www.facebook.com/" target="_blank" aria-label="Facebook" class="social-icon">
-                    <img src="https://cdn-icons-png.flaticon.com/512/733/733547.png" alt="Facebook">
-                </a>
-                <a href="https://www.instagram.com/" target="_blank" aria-label="Instagram" class="social-icon">
-                    <img src="https://cdn-icons-png.flaticon.com/512/2111/2111463.png" alt="Instagram">
-                </a>
-                <a href="https://www.tiktok.com/" target="_blank" aria-label="TikTok" class="social-icon">
-                    <img src="https://cdn-icons-png.flaticon.com/512/3046/3046122.png" alt="TikTok">
-                </a>
-            </div>
-        </div>
-    </section>
--->
     <!-- Contacto -->
     <section id="contacto" class="section bg-light py-5">
         <div class="container">
@@ -274,160 +235,29 @@
             </form>
         </div>
     </section>
-
-    <!-- Libro de Reclamaciones -->
-
-    <!-- <section id="reclamaciones" class="section py-5 text-center">
-    <div class="container">
-        <h2 class="section-title" data-aos="zoom-in">Libro de Reclamaciones</h2>
-        <p class="mb-4" data-aos="fade-up" data-aos-delay="100">
-            Si deseas presentar un reclamo o sugerencia, por favor haz clic en el botón a continuación:
-        </p>  -->
-    <!--    Botón con animación -->
-    <!--   <a href="https://librovirtual.pe/r/avicruz-sociedad-anonima-cerrada/" target="_blank" class="btn btn-danger" data-aos="fade-up" data-aos-delay="300">
-            <i class="fas fa-book-open"></i> Libro de Reclamaciones
-        </a>
-    </div>
-</section>
- -->
- <!-- PREGUNTAS FRECUENTES -->
-<!-- 
-    <section id="faq" class="section py-5 bg-light">
-        <div class="container">
-            <h2 class="section-title text-center mb-4" data-aos="fade-up">Preguntas Frecuentes</h2>
-
-            <div class="accordion" id="faqAccordion" data-aos="fade-up" data-aos-delay="100">
-                <div class="accordion-item">
-                    <h2 class="accordion-header" id="faqHeading1">
-                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
-                            data-bs-target="#faqCollapse1" aria-expanded="false" aria-controls="faqCollapse1">
-                            ¿Cuál es el horario de atención?
-                        </button>
-                    </h2>
-                    <div id="faqCollapse1" class="accordion-collapse collapse" aria-labelledby="faqHeading1"
-                        data-bs-parent="#faqAccordion">
-                        <div class="accordion-body">
-                            Nuestro horario de atención es de lunes a viernes de 9:00 a.m. a 6:00 p.m.
-                        </div>
-                    </div>
-                </div>
-
-                <div class="accordion-item">
-                    <h2 class="accordion-header" id="faqHeading2">
-                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
-                            data-bs-target="#faqCollapse2" aria-expanded="false" aria-controls="faqCollapse2">
-                            ¿Dónde están ubicadas las sedes?
-                        </button>
-                    </h2>
-                    <div id="faqCollapse2" class="accordion-collapse collapse" aria-labelledby="faqHeading2"
-                        data-bs-parent="#faqAccordion">
-                        <div class="accordion-body">
-                            Tenemos varias sedes: Avelino Cáceres (principal), Miraflores, Mariano Melgar, Socabaya,
-                            entre otras.
-                        </div>
-                    </div>
-                </div>
-
-                <div class="accordion-item">
-                    <h2 class="accordion-header" id="faqHeading3">
-                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
-                            data-bs-target="#faqCollapse3" aria-expanded="false" aria-controls="faqCollapse3">
-                            ¿Cómo puedo contactarlos?
-                        </button>
-                    </h2>
-                    <div id="faqCollapse3" class="accordion-collapse collapse" aria-labelledby="faqHeading3"
-                        data-bs-parent="#faqAccordion">
-                        <div class="accordion-body">
-                            Puedes contactarnos vía correo electrónico a avesdelsur@delacruzcorp.com o al teléfono +51
-                            993 671 861.
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
- -->
     <!-- Footer -->
-    <footer class="bg-dark text-white text-center py-5 mt-5">
-        <div class="container">
-            <div class="row justify-content-center mb-4">
-                <div class="col-md-4">
-                    <h5>Contáctanos</h5>
-                    <p class="mb-1"><i class="fas fa-map-marker-alt me-2"></i>Av. Vidaurrazaga, Mz E Lt 01, al costado
-                        de "Mi Mercado", frente a "Caja Sullana"</p>
-                    <p class="mb-1"><i class="fas fa-envelope me-2"></i>avesdelsur@delacruzcorp.com</p>
-                    <p><i class="fas fa-phone-alt me-2"></i>+51 993 671 861</p>
-                </div>
-                <div class="col-md-4">
-                    <h5>Accesos Rápidos</h5>
-                    <ul class="list-unstyled">
-                        <li><a href="#inicio" class="text-white text-decoration-none">Inicio</a></li>
-                        <li><a href="#quienes-somos" class="text-white text-decoration-none">Quiénes Somos</a></li>
-                        <li><a href="#sedes" class="text-white text-decoration-none">Sedes</a></li>
-                        <li><a href="#contacto" class="text-white text-decoration-none">Contacto</a></li>
-                    </ul>
-                </div>
-                <div class="col-md-4">
-                    <h5>Libro de Reclamaciones</h5>
-                    <p>¿Tienes alguna queja o sugerencia?</p>
-                    <a href="https://librovirtual.pe/r/avicruz-sociedad-anonima-cerrada/" target="_blank"
-                        class="btn btn-outline-danger">
-                        <i class="fas fa-book-open me-2"></i>Acceder
-                    </a>
-                </div>
-            </div>
-
-            <!-- NUEVA FILA para Redes Sociales -->
-            <div class="row justify-content-center mb-4">
-                <div class="col-12">
-                    <h5>Síguenos en redes</h5>
-                    <div class="d-flex justify-content-center gap-4 mt-2">
-                        <a href="https://www.facebook.com/avicruz.peru" target="_blank" aria-label="Facebook"
-                            class="social-icon">
-                            <img src="https://cdn-icons-png.flaticon.com/512/733/733547.png" alt="Facebook" width="32"
-                                height="32" />
-                        </a>
-                        <a href="https://www.instagram.com/" target="_blank" aria-label="Instagram" class="social-icon">
-                            <img src="https://cdn-icons-png.flaticon.com/512/2111/2111463.png" alt="Instagram"
-                                width="32" height="32" />
-                        </a>
-                        <a href="https://www.tiktok.com/" target="_blank" aria-label="TikTok" class="social-icon">
-                            <img src="https://cdn-icons-png.flaticon.com/512/3046/3046122.png" alt="TikTok" width="32"
-                                height="32" class="tiktok-icon" />
-                        </a>
-
-                    </div>
-                </div>
-            </div>
-
-            <hr class="bg-secondary">
-            <p class="mb-0">&copy; 2025 Avicruz S.A.C. Todos los derechos reservados.</p>
-        </div>
-    </footer>
-
-
+    <div id="footer-placeholder"></div>
     <!-- Botón WhatsApp -->
-    <a href="https://wa.me/51999999999" class="whatsapp-float" target="_blank"
+    <a href="https://wa.me/51993671861" class="whatsapp-float" target="_blank"
         aria-label="Chatea con nosotros por WhatsApp" style="
-    position: fixed;
-    bottom: 20px;
-    right: 20px;
-    z-index: 10000;">
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            z-index: 10000;">
         <img src="https://cdn-icons-png.flaticon.com/512/733/733585.png" alt="WhatsApp" width="50" height="50" />
     </a>
 
     <!-- Chatbot flotante pequeño (icono) -->
     <div id="chatbot-container" style="
-    position: fixed;
-    bottom: 90px; /* justo encima del whatsapp */
-    right: 20px;
-    z-index: 10000;
-    cursor: pointer;
-">
+            position: fixed;
+            bottom: 90px; /* justo encima del whatsapp */
+            right: 20px;
+            z-index: 10000;
+            cursor: pointer;
+        ">
         <img src="https://cdn-icons-png.flaticon.com/512/4712/4712027.png" alt="Chatbot" width="50" height="50"
             id="chatbot-toggle" />
     </div>
-
     <!-- Chatbot expandido (oculto inicialmente) -->
     <div id="chatbot"
         style="display:none; position: fixed; bottom: 140px; right: 20px; width: 320px; max-height: 450px; background: white; box-shadow: 0 0 10px rgba(0,0,0,0.3); border-radius: 10px; display: flex; flex-direction: column; overflow: hidden; font-family: Arial, sans-serif; z-index: 10001;">
@@ -445,6 +275,58 @@
         </form>
     </div>
 
+    <script>
+        // Cargar cabecera
+        fetch("header.html")
+            .then(res => res.text())
+            .then(data => {
+                document.getElementById("header-placeholder").innerHTML = data;
+
+                // 🟢 Ejecutar esto después de insertar el navbar
+                const navLinks = document.querySelectorAll('.navbar-collapse .nav-link');
+                const navbarCollapse = document.querySelector('.navbar-collapse');
+
+                navLinks.forEach(link => {
+                    link.addEventListener('click', () => {
+                        if (navbarCollapse.classList.contains('show')) {
+                            const bsCollapse = bootstrap.Collapse.getInstance(navbarCollapse);
+                            if (bsCollapse) {
+                                bsCollapse.hide();
+                            }
+                        }
+                    });
+                });
+            });
+
+        // Cargar footer
+        fetch("footer.html")
+            .then(res => res.text())
+            .then(data => {
+                document.getElementById("footer-placeholder").innerHTML = data;
+            });
+    </script>
+
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const navLinks = document.querySelectorAll('.navbar-collapse .nav-link');
+            const navbarCollapse = document.querySelector('.navbar-collapse');
+
+            navLinks.forEach(link => {
+                link.addEventListener('click', () => {
+                    if (navbarCollapse.classList.contains('show')) {
+                        const bsCollapse = bootstrap.Collapse.getInstance(navbarCollapse);
+                        if (bsCollapse) {
+                            bsCollapse.hide();
+                        }
+                    }
+                });
+            });
+        });
+    </script>
+
+
+
 
     <!-- Scripts -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
@@ -453,6 +335,7 @@
 
 </body>
 <!-- Contenedor animación festiva -->
-<canvas id="festiveCanvas" style="position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; pointer-events: none; z-index: 9999;"></canvas>
+<canvas id="festiveCanvas"
+    style="position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; pointer-events: none; z-index: 9999;"></canvas>
 
 </html>
